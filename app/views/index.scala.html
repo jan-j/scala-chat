@@ -1,0 +1,20 @@
+@(feed: Call, message: Call)
+
+@main("Chat") {
+
+    <div class="chat">
+        <div class="messages">
+        </div>
+        <form>
+            <input type="text" placeholder="Type nick here..." value="@{"User" + scala.util.Random.nextInt(100)}">
+            <textarea class="message" placeholder="Type message here..."></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        var feed = new EventSource('@feed.absoluteURL()');
+        feed.addEventListener('message')
+    </script>
+
+}
