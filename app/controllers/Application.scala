@@ -16,9 +16,7 @@ class Application extends Controller {
 
   def chatFeed = Action { req =>
     println("User connected to chat: " + req.remoteAddress)
-    Ok.chunked(chatOut
-      &> EventSource()
-    ).as("text/event-stream")
+    Ok.chunked(chatOut &> EventSource()).as("text/event-stream")
   }
 
   def postMessage = Action(parse.json) { req =>

@@ -23,7 +23,16 @@
                 var user = $userInput.val();
                 var content = $contentInput.val();
 
-                console.log(user, content);
+                $.ajax({
+                    method: 'post',
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    url: '@message.absoluteURL()',
+                    data: JSON.stringify({
+                        user: user,
+                        content: content
+                    })
+                });
 
                 $contentInput.val('');
                 e.preventDefault();
