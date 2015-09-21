@@ -1,20 +1,52 @@
-@(feed: Call, message: Call)
+@(feed: Call, message: Call)(implicit requestHeader: RequestHeader)
 
 @main("Chat") {
-
     <div class="chat">
         <div class="messages">
         </div>
         <form>
-            <input type="text" placeholder="Type nick here..." value="@{"User" + scala.util.Random.nextInt(100)}">
-            <textarea class="message" placeholder="Type message here..."></textarea>
+            <input type="text" class="user" placeholder="Type nick here..." value="@{"User" + scala.util.Random.nextInt(100)}">
+            <textarea class="content" placeholder="Type message here..."></textarea>
             <button type="submit">Submit</button>
         </form>
     </div>
 
     <script>
-        var feed = new EventSource('@feed.absoluteURL()');
-        feed.addEventListener('message')
-    </script>
+        $(function () {
+            var $chat = $('.chat');
+            var $messages = $chat.find('.messages');
+            var $form = $chat.find('form');
+            var $userInput = $form.find('.user');
+            var $contentInput = $form.find('.content');
 
+            $form.on('submit', function (e) {
+                var user = $userInput.val();
+                var content = $contentInput.val();
+
+                console.log(user, content);
+
+                $contentInput.val('');
+                e.preventDefault();
+                return false;
+            });
+
+            $contentInput.on('keydown', function (e) {
+                if (e.keyCode == 13 && !e.shiftKey) {
+                    $form.submit();
+                    return false;
+                }
+            });
+
+            var feed = new EventSource('@feed.absoluteURL()');
+            feed.addEventListener('message', function (response) {
+                console.log(response);
+                var message = JSON.parse(response.data);
+                var $message = $('<div class="message" />')
+                    .append('<div class="user">' + message.user + '</div>')
+                    .append('<div class="message">' + message.content + '</div>');
+
+                $message.appendTo($messages);
+            });
+        });
+    </script>
 }

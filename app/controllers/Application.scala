@@ -10,7 +10,7 @@ class Application extends Controller {
 
   val (chatOut, chatChannel) = Concurrent.broadcast[JsValue]
 
-  def index = Action {
+  def index = Action { implicit req =>
     Ok(views.html.index(routes.Application.chatFeed(), routes.Application.postMessage()))
   }
 
