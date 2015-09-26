@@ -5,11 +5,24 @@
 <html lang="en">
     <head>
         <title>@title</title>
+        <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css").absoluteURL()">
         <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
         <script src="@routes.Assets.versioned("javascripts/main.js").absoluteURL()" type="text/javascript"></script>
     </head>
     <body>
-        @content
+        <div class="container">
+            <div class="header clearfix">
+                <h3 class="text-muted">Scala Chat</h3>
+            </div>
+
+            @content
+
+            <footer class="footer">
+                <p>
+                    Created by <a href="http://jablonski.me">John Jablonski</a>
+                </p>
+            </footer>
+        </div>
     </body>
 </html>

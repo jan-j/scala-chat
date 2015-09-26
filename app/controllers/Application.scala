@@ -10,6 +10,8 @@ import play.api.libs.concurrent.Execution.Implicits._
 class Application extends Controller {
 
   val (chatOut, chatChannel) = Concurrent.broadcast[JsValue]
+
+  // Following two lines are just for debugging broadcast
   val chatDebug = Iteratee.foreach[JsValue](m => println("Debug: " + m.toString))
   chatOut |>>> chatDebug
 
