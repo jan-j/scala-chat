@@ -4,7 +4,11 @@
 
 This application will be developed and improved and different versions will be kept in branches.
 
-## Build with
+## Demo
+
+Latest version demo can be checked here: [https://scala-chat.herokuapp.com/](https://scala-chat.herokuapp.com/).
+
+## Built with
 
 Scala Play Framework 2.4 + Server Sent Events + AngularJS
 
