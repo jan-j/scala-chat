@@ -2,11 +2,11 @@
 
 **Simple chat application build on top of Scala Play Framework**
 
-This application will be developed and improved with each commit
- and can change dramatically with each major tag version.
+This application will be developed and improved and different versions will be kept in branches.
 
 ## Build with
-Scala Play Framework 2.4 + Server Sent Events + jQuery
+
+Scala Play Framework 2.4 + Server Sent Events + AngularJS
 
 ## How to run
 

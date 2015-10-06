@@ -46,6 +46,10 @@ body {
     }
 }
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
 /* Chat styling */
 .chat .messages {
     max-height: 300px;
@@ -69,13 +73,13 @@ body {
     margin-top: 0;
 }
 
-.chat .message .user,
+.chat .message .username,
 .chat .message .content {
     padding: 5px;
     min-height: 30px;
     word-wrap: break-word;
 }
-.chat .message .user {
+.chat .message .username {
     color: #fff;
     background-color: #337ab7;
     border-color: #2e6da4;
@@ -87,12 +91,17 @@ body {
     white-space: pre;
 }
 
+.chat .misc-controls {
+    text-align: right;
+    margin-top: 5px;
+}
+
 @media screen and (min-width: 768px) {
-    .chat .message .user,
+    .chat .message .username,
     .chat .message .content {
         border-radius: 5px;
     }
-    .chat .message .user {
+    .chat .message .username {
         text-align: right;
         margin-right: -25px;
     }
